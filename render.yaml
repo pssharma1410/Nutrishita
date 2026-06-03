@@ -3,7 +3,7 @@ services:
     name: nutrishita
     env: node
     plan: free
-    buildCommand: npm run install:all && npm run build:client
+    buildCommand: npm install && npm run build
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
