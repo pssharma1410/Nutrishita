@@ -45,7 +45,7 @@ app.use('/api', (_req, res) => {
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(CLIENT_DIST))
 
-  app.get('*', (req, res, next) => {
+  app.use((req, res, next) => {
     if (req.path.startsWith('/api')) return next()
     res.sendFile(path.join(CLIENT_DIST, 'index.html'), (err) => {
       if (err) next(err)
