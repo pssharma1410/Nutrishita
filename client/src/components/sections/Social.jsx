@@ -1,16 +1,16 @@
-import { Camera, ExternalLink, Video } from 'lucide-react'
+import { Camera, ExternalLink, Play, Video } from 'lucide-react'
 import FadeUp from '../ui/FadeUp'
 
 const instagramPosts = [
-  'https://www.instagram.com/p/DX4XtK3Iaqy/',
-  'https://www.instagram.com/p/DYASFy9CXq8/',
-  'https://www.instagram.com/p/DYKqwnOCd8R/',
-  'https://www.instagram.com/p/DXuEgZUI0Bi/',
-  'https://www.instagram.com/p/DYUqxnki_jE/',
-  'https://www.instagram.com/p/DXPclqBgnbB/',
-  'https://www.instagram.com/p/DXKVUwwgtYZ/',
-  'https://www.instagram.com/p/DWrFy0Ikn-l/',
-  'https://www.instagram.com/p/DWl8HBQgkHH/',
+  { url: 'https://www.instagram.com/p/DX4XtK3Iaqy/', title: 'Daily nutrition reel' },
+  { url: 'https://www.instagram.com/p/DYASFy9CXq8/', title: 'Food habit tip' },
+  { url: 'https://www.instagram.com/p/DYKqwnOCd8R/', title: 'Diet decode' },
+  { url: 'https://www.instagram.com/p/DXuEgZUI0Bi/', title: 'Wellness check' },
+  { url: 'https://www.instagram.com/p/DYUqxnki_jE/', title: 'Nutrition reminder' },
+  { url: 'https://www.instagram.com/p/DXPclqBgnbB/', title: 'Healthy swaps' },
+  { url: 'https://www.instagram.com/p/DXKVUwwgtYZ/', title: 'Plate balance' },
+  { url: 'https://www.instagram.com/p/DWrFy0Ikn-l/', title: 'Real food note' },
+  { url: 'https://www.instagram.com/p/DWl8HBQgkHH/', title: 'Desi diet decode' },
 ]
 
 const youtubeShorts = [
@@ -26,7 +26,7 @@ const youtubeShorts = [
 ]
 
 function instagramEmbedUrl(postUrl) {
-  return `${postUrl}embed/captioned/`
+  return `${postUrl}embed/`
 }
 
 function youtubeEmbedUrl(shortUrl) {
@@ -52,25 +52,44 @@ export default function Social() {
                   <span className="font-sans text-xs font-semibold uppercase tracking-wider">Instagram</span>
                 </div>
                 <p className="mt-3 font-display text-xl font-semibold text-ink">@nutrishita</p>
-                <p className="mt-2 text-sm text-sage-700">Follow for daily nutrition tips and short video previews</p>
+                <p className="mt-2 text-sm text-sage-700">Tap any reel card to watch it on Instagram</p>
                 <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                  {instagramPosts.map((postUrl, i) => (
-                    <div key={postUrl} className="group/item overflow-hidden rounded-xl border border-border bg-sage-50 shadow-inner">
-                      <div className="relative aspect-[4/5] bg-black">
+                  {instagramPosts.map((post, i) => (
+                    <div
+                      key={post.url}
+                      className="group/item overflow-hidden rounded-xl border border-border bg-white shadow-inner transition duration-300 hover:-translate-y-1 hover:shadow-md"
+                    >
+                      <div className="relative aspect-[4/5] overflow-hidden bg-sage-100">
                         <iframe
-                          src={instagramEmbedUrl(postUrl)}
-                          title={`Instagram post ${i + 1}`}
-                          className="absolute inset-0 h-full w-full"
+                          src={instagramEmbedUrl(post.url)}
+                          title={`Instagram reel preview ${i + 1}`}
+                          className="pointer-events-none absolute left-0 top-[-54px] h-[calc(100%+108px)] w-full border-0"
                           loading="lazy"
                           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                           referrerPolicy="strict-origin-when-cross-origin"
                         />
+                        <div className="absolute inset-x-2 top-2 flex items-center justify-between">
+                          <span className="rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-pink-600 shadow-sm backdrop-blur">
+                            Reel {i + 1}
+                          </span>
+                        </div>
+                        <a
+                          href={post.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Open ${post.title} on Instagram`}
+                          className="absolute inset-0 flex items-center justify-center"
+                        >
+                          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-black/35 text-white shadow-md backdrop-blur-sm transition group-hover/item:scale-105">
+                            <Play className="ml-0.5 h-7 w-7 fill-current" aria-hidden />
+                          </span>
+                        </a>
                       </div>
                       <a
-                        href={postUrl}
+                        href={post.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center justify-between gap-2 border-t border-border/70 px-3 py-2 text-[11px] font-semibold uppercase tracking-wider text-sage-700 transition hover:text-ink"
+                        className="flex items-center justify-between gap-2 border-t border-border/70 px-3 py-2 text-[11px] font-semibold uppercase tracking-wider text-sage-700 transition group-hover/item:text-ink"
                       >
                         Open on Instagram
                         <ExternalLink className="h-3.5 w-3.5" aria-hidden />
@@ -88,11 +107,14 @@ export default function Social() {
               <span className="font-sans text-xs font-semibold uppercase tracking-wider">YouTube</span>
             </div>
             <p className="mt-3 font-display text-xl font-semibold text-ink">Nutrishita by Akshita</p>
-            <p className="mt-2 text-sm text-sage-700">Watch free nutrition guides and short-form video clips</p>
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <p className="mt-2 text-sm text-sage-700">Shorts play muted in a compact carousel</p>
+            <div className="mt-6 flex gap-4 overflow-x-auto pb-3 [scrollbar-width:thin]">
               {youtubeShorts.map((shortUrl, i) => {
                 return (
-                  <div key={`${shortUrl}-${i}`} className="overflow-hidden rounded-xl border border-border bg-sage-50 shadow-inner">
+                  <div
+                    key={`${shortUrl}-${i}`}
+                    className="w-[190px] shrink-0 overflow-hidden rounded-xl border border-border bg-sage-50 shadow-inner sm:w-[210px]"
+                  >
                     <div className="relative aspect-[9/16] bg-black">
                       <iframe
                         src={youtubeEmbedUrl(shortUrl)}
