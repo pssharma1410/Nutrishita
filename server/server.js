@@ -63,11 +63,16 @@ app.use((err, _req, res, _next) => {
 async function start() {
   const uri = process.env.MONGO_URI
   if (!uri) {
-    console.error('Missing MONGO_URI in environment.')
-    process.exit(1)
+    console.warn('Missing MONGO_URI in environment. Starting without database connectivity.')
+  } else {
+    try {
+      await mongoose.connect(uri)
+      console.log('MongoDB connected')
+    } catch (error) {
+      console.error('Failed to connect to MongoDB.', error)
+      process.exit(1)
+    }
   }
-  await mongoose.connect(uri)
-  console.log('MongoDB connected')
 
   app.listen(PORT, () => {
     console.log(`API listening on http://localhost:${PORT}`)
