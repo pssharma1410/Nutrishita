@@ -65,7 +65,7 @@ export default function BookingSlots({
                     onClick={() => {
                       if (!disabled && isAvail) onSelectTime(t)
                     }}
-                    className={`flex min-h-[40px] items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition focus-ring-invert ${
+                    className={`flex min-h-[44px] items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition focus-ring-invert ${
                       disabled
                         ? 'cursor-not-allowed border-white/10 bg-transparent text-sage-400 opacity-30 line-through'
                         : isSelected

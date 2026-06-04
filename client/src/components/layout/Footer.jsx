@@ -10,7 +10,7 @@ const quick = [
 export default function Footer() {
   return (
     <footer className="border-t border-sage-800 bg-ink text-sage-300">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <p className="text-sage-100">
@@ -34,7 +34,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <div className="rounded-2xl bg-sage-deep p-6 text-sage-100 shadow-inner">
+            <div className="rounded-2xl bg-sage-deep p-5 text-sage-100 shadow-inner sm:p-6">
               <p className="font-display text-lg font-medium">Book a consultation</p>
               <p className="mt-2 text-sm text-sage-200">Complimentary 30-minute discovery call.</p>
               <Link

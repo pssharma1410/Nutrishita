@@ -35,8 +35,8 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="scroll-mt-28 bg-warm-cream py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="services" className="scroll-mt-24 bg-warm-cream py-16 md:scroll-mt-28 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <FadeUp className="text-center">
           <p className="eyebrow">Services</p>
           <h2 className="section-title mx-auto mt-4 max-w-2xl text-ink">How we can work together</h2>
@@ -46,14 +46,14 @@ export default function Services() {
           {services.map((s) => (
             <article
               key={s.title}
-              className="fade-up group flex flex-col rounded-2xl border border-border bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sage-mid hover:shadow-xl"
+              className="fade-up group flex flex-col rounded-2xl border border-border bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sage-mid hover:shadow-xl md:p-8"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sage-100 text-sage-mid">
                 <s.icon className="h-6 w-6" aria-hidden />
               </div>
               <h3 className="card-title mt-5 text-ink">{s.title}</h3>
               <p className="mt-3 flex-1 text-sage-800">{s.desc}</p>
-              <div className="mt-4 max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out group-hover:max-h-28 group-focus-within:max-h-28">
+              <div className="mt-4 max-h-40 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-0 md:group-hover:max-h-32 md:group-focus-within:max-h-32">
                 <p className="pt-1 font-sans text-xs font-semibold uppercase tracking-wide text-sage-500">
                   What&apos;s included:
                 </p>
@@ -73,7 +73,7 @@ export default function Services() {
             </article>
           ))}
 
-          <div className="fade-up flex flex-col justify-between rounded-2xl bg-sage-deep p-8 text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div className="fade-up flex flex-col justify-between rounded-2xl bg-sage-deep p-6 text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl md:p-8">
             <div>
               <h3 className="font-display text-xl font-medium">Not sure which plan fits you?</h3>
               <p className="mt-3 text-sm leading-relaxed text-sage-100">

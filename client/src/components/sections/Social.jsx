@@ -36,24 +36,24 @@ function youtubeEmbedUrl(shortUrl) {
 
 export default function Social() {
   return (
-    <section id="social" className="scroll-mt-28 bg-white py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="social" className="scroll-mt-24 bg-white py-16 md:scroll-mt-28 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <FadeUp className="text-center">
           <p className="eyebrow">Community</p>
           <h2 className="section-title mx-auto mt-4 max-w-2xl text-ink">Follow the journey</h2>
         </FadeUp>
 
-        <FadeUp stagger className="mt-12 grid gap-6 md:grid-cols-2">
+        <FadeUp stagger className="mt-10 grid gap-6 lg:grid-cols-2">
           <article className="fade-up group rounded-2xl border border-border bg-white p-1 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
             <div className="rounded-[calc(1rem-2px)] bg-gradient-to-br from-pink-400 via-purple-400 to-amber-300 p-[1px]">
-              <div className="rounded-[calc(1rem-3px)] bg-white p-6">
+              <div className="rounded-[calc(1rem-3px)] bg-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 text-pink-600">
                   <Camera className="h-6 w-6" aria-hidden />
                   <span className="font-sans text-xs font-semibold uppercase tracking-wider">Instagram</span>
                 </div>
                 <p className="mt-3 font-display text-xl font-semibold text-ink">@nutrishita</p>
                 <p className="mt-2 text-sm text-sage-700">Tap any reel card to watch it on Instagram</p>
-                <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
                   {instagramPosts.map((post, i) => (
                     <div
                       key={post.url}
@@ -63,7 +63,7 @@ export default function Social() {
                         <iframe
                           src={instagramEmbedUrl(post.url)}
                           title={`Instagram reel preview ${i + 1}`}
-                          className="pointer-events-none absolute left-0 top-[-54px] h-[calc(100%+108px)] w-full border-0"
+                          className="pointer-events-none absolute left-0 top-[-46px] h-[calc(100%+92px)] w-full border-0"
                           loading="lazy"
                           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                           referrerPolicy="strict-origin-when-cross-origin"
@@ -101,19 +101,19 @@ export default function Social() {
             </div>
           </article>
 
-          <article className="fade-up group rounded-2xl border border-border bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <article className="fade-up group rounded-2xl border border-border bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-6 md:p-8">
             <div className="flex items-center gap-2 text-red-600">
               <Video className="h-7 w-7" aria-hidden />
               <span className="font-sans text-xs font-semibold uppercase tracking-wider">YouTube</span>
             </div>
             <p className="mt-3 font-display text-xl font-semibold text-ink">Nutrishita by Akshita</p>
             <p className="mt-2 text-sm text-sage-700">Shorts play muted in a compact carousel</p>
-            <div className="mt-6 flex gap-4 overflow-x-auto pb-3 [scrollbar-width:thin]">
+            <div className="mt-6 flex snap-x gap-3 overflow-x-auto pb-3 [scrollbar-width:thin] sm:gap-4">
               {youtubeShorts.map((shortUrl, i) => {
                 return (
                   <div
                     key={`${shortUrl}-${i}`}
-                    className="w-[190px] shrink-0 overflow-hidden rounded-xl border border-border bg-sage-50 shadow-inner sm:w-[210px]"
+                    className="w-[160px] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-sage-50 shadow-inner sm:w-[210px]"
                   >
                     <div className="relative aspect-[9/16] bg-black">
                       <iframe

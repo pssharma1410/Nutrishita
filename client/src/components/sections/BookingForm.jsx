@@ -48,7 +48,7 @@ export default function BookingForm({
         We&apos;ll send a calendar invite + meeting link to your email
       </p>
 
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2 md:gap-5">
         <div className="md:col-span-1">
           <label htmlFor={`${baseId}-name`} className="block text-sm font-medium text-sage-200">
             Full name
@@ -59,7 +59,7 @@ export default function BookingForm({
             value={name}
             onChange={onChange}
             autoComplete="name"
-            className="focus-ring-invert mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-sage-400"
+            className="focus-ring-invert mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-base text-white placeholder:text-sage-400"
             placeholder="Your full name"
           />
           {fieldErrors.name && (
@@ -79,7 +79,7 @@ export default function BookingForm({
             value={email}
             onChange={onChange}
             autoComplete="email"
-            className="focus-ring-invert mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-sage-400"
+            className="focus-ring-invert mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-base text-white placeholder:text-sage-400"
             placeholder="you@example.com"
           />
           {fieldErrors.email && (
@@ -99,7 +99,7 @@ export default function BookingForm({
             value={phone}
             onChange={onChange}
             autoComplete="tel"
-            className="focus-ring-invert mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-sage-400"
+            className="focus-ring-invert mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-base text-white placeholder:text-sage-400"
             placeholder="+91 …"
           />
           {fieldErrors.phone && (
@@ -119,7 +119,7 @@ export default function BookingForm({
             value={notes}
             onChange={onChange}
             rows={3}
-            className="focus-ring-invert mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-sage-400"
+            className="focus-ring-invert mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-base text-white placeholder:text-sage-400"
             placeholder="Goals, dietary preferences, or questions for our session"
           />
           <p className="mt-1 text-xs text-sage-400">

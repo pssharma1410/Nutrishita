@@ -2,10 +2,10 @@ import FadeUp from '../ui/FadeUp'
 
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-28 bg-white py-24 md:py-32">
+    <section id="about" className="scroll-mt-24 bg-white py-16 md:scroll-mt-28 md:py-32">
       <FadeUp
         stagger
-        className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-2 md:items-start md:gap-16"
+        className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-2 md:items-start md:gap-16"
       >
         <div className="fade-up">
           <p className="eyebrow">About</p>
@@ -35,8 +35,8 @@ export default function About() {
           </div>
         </div>
         <div className="fade-up">
-          <div className="rounded-3xl bg-sage-50 p-8 md:p-10">
-            <blockquote className="border-l-[3px] border-sage-mid pl-6 font-display text-xl italic leading-relaxed text-sage-800 md:text-2xl">
+          <div className="rounded-3xl bg-sage-50 p-6 md:p-10">
+            <blockquote className="border-l-[3px] border-sage-mid pl-5 font-display text-lg italic leading-relaxed text-sage-800 md:pl-6 md:text-2xl">
               “My role is to listen first — then translate science into a plan that respects your life, your culture, and
               your goals.”
             </blockquote>

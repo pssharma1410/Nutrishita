@@ -82,7 +82,7 @@ export default function BookingCalendar({ value, onChange, minDate }) {
       <div className="mt-2 grid grid-cols-7 gap-1">
         {cells.map((cell, idx) => {
           if (cell.type === 'pad') {
-            return <div key={`p-${idx}`} className="h-10 w-10" aria-hidden />
+            return <div key={`p-${idx}`} className="aspect-square min-h-9" aria-hidden />
           }
           const { ymd } = cell
           const isPast = ymd < minDate
@@ -94,7 +94,7 @@ export default function BookingCalendar({ value, onChange, minDate }) {
               type="button"
               disabled={isPast}
               onClick={() => onChange(ymd)}
-              className={`flex h-10 w-10 items-center justify-center rounded-lg text-sm font-medium transition focus-ring-invert ${
+              className={`flex aspect-square min-h-9 w-full items-center justify-center rounded-lg text-sm font-medium transition focus-ring-invert ${
                 isPast
                   ? 'cursor-not-allowed text-sage-600 line-through opacity-40'
                   : isSelected

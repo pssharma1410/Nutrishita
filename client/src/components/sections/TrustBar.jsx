@@ -11,7 +11,7 @@ const items = [
 export default function TrustBar() {
   return (
     <section className="border-y border-border bg-warm-cream py-8 md:py-10" aria-label="Trust signals">
-      <FadeUp className="mx-auto max-w-6xl px-6">
+      <FadeUp className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="hidden items-center justify-center gap-6 md:flex md:flex-wrap lg:gap-10">
           {items.map(({ icon: Icon, label }, i) => (
             <div key={label} className="flex items-center gap-3">

@@ -144,22 +144,22 @@ export default function Booking() {
   }
 
   return (
-    <section id="booking" className="relative scroll-mt-28 overflow-hidden bg-sage-deep py-24 text-white md:py-32">
+    <section id="booking" className="relative scroll-mt-24 overflow-hidden bg-sage-deep py-16 text-white md:scroll-mt-28 md:py-32">
       <div className="booking-grain absolute inset-0" aria-hidden />
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <FadeUp className="max-w-2xl">
           <p className="eyebrow text-sage-300">Appointment</p>
           <h2 className="section-title mt-4 text-white">Book your complimentary consultation</h2>
-          <p className="mt-4 text-lg text-sage-200">
+          <p className="mt-4 text-base text-sage-200 md:text-lg">
             Select a date, choose a time, and confirm your details. You&apos;ll receive your calendar invite by email.
           </p>
         </FadeUp>
 
-        <FadeUp className="mt-12">
+        <FadeUp className="mt-8 md:mt-12">
           <StepIndicator currentStep={bookingStep} />
         </FadeUp>
 
-        <div className="relative mt-12 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-md md:p-10">
+        <div className="relative mt-8 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur-md sm:p-6 md:mt-12 md:rounded-3xl md:p-10">
           {bookingStep > 1 && (
             <button
               type="button"
@@ -171,9 +171,9 @@ export default function Booking() {
           )}
 
           {bookingStep === 1 && (
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
+            <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
               <BookingCalendar value={date} onChange={setDateSafe} minDate={todayYMD()} />
-              <div className="rounded-2xl border border-white/10 bg-sage-deep/40 p-6 text-sage-200 lg:mt-10">
+              <div className="rounded-2xl border border-white/10 bg-sage-deep/40 p-5 text-sage-200 sm:p-6 lg:mt-10">
                 <p className="font-display text-lg text-white">How it works</p>
                 <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm">
                   <li>Pick a weekday that suits you (Mon–Fri, 10:00–18:00 IST).</li>
@@ -181,11 +181,11 @@ export default function Booking() {
                   <li>Share your contact details — we&apos;ll confirm by email.</li>
                 </ol>
               </div>
-              <div className="lg:col-span-2 flex justify-end">
+              <div className="flex justify-stretch lg:col-span-2 sm:justify-end">
                 <button
                   type="button"
                   onClick={() => setBookingStep(2)}
-                  className="focus-ring-invert rounded-full bg-sage-mid px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-sage-600"
+                  className="focus-ring-invert w-full rounded-full bg-sage-mid px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-sage-600 sm:w-auto"
                 >
                   Continue
                 </button>
@@ -203,12 +203,12 @@ export default function Booking() {
                 selectedTime={selectedTime}
                 onSelectTime={setSelectedTime}
               />
-              <div className="flex flex-wrap items-center justify-end gap-3">
+              <div className="flex flex-wrap items-center justify-stretch gap-3 sm:justify-end">
                 <button
                   type="button"
                   disabled={!selectedTime || slotsLoading}
                   onClick={() => setBookingStep(3)}
-                  className="focus-ring-invert rounded-full bg-sage-mid px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-sage-600 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="focus-ring-invert w-full rounded-full bg-sage-mid px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-sage-600 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
                 >
                   Continue
                 </button>

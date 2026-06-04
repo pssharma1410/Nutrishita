@@ -85,7 +85,7 @@ export default function Navbar() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${headerBg}`}>
       <nav
-        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
+        className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 md:py-4"
         aria-label="Primary"
       >
         <Link
@@ -93,8 +93,8 @@ export default function Navbar() {
           aria-label="Nutrishita by Akshita, home"
           className="inline-flex items-baseline gap-1.5 text-sage-deep transition-colors duration-200 hover:text-sage-700"
         >
-          <span className="font-display text-xl font-semibold tracking-tight md:text-2xl">Nutrishita</span>
-          <span className="font-sans text-sm font-light tracking-tight md:text-base">by Akshita</span>
+          <span className="font-display text-lg font-semibold tracking-tight sm:text-xl md:text-2xl">Nutrishita</span>
+          <span className="font-sans text-xs font-light tracking-tight sm:text-sm md:text-base">by Akshita</span>
         </Link>
 
         <ul className="hidden items-center gap-10 md:flex">
@@ -168,7 +168,7 @@ export default function Navbar() {
                 <X className="h-6 w-6" aria-hidden />
               </button>
             </div>
-            <ul className="flex flex-1 flex-col justify-center gap-2 px-10 pb-16">
+            <ul className="flex flex-1 flex-col justify-center gap-2 px-8 pb-16">
               {links.map(({ id, label }) => (
                 <li key={id}>
                   {location.pathname === '/' ? (

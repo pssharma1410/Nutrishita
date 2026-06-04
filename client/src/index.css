@@ -40,10 +40,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-surface font-sans text-[16px] leading-[1.7] text-sage-800 antialiased;
+    overflow-x: hidden;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -58,7 +60,7 @@
   }
 
   .section-title {
-    @apply font-display text-[42px] font-medium leading-tight tracking-tight text-ink;
+    @apply font-display text-[32px] font-medium leading-tight tracking-tight text-ink md:text-[42px];
   }
 
   .eyebrow {

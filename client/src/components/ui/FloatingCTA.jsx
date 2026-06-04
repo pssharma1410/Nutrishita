@@ -44,11 +44,11 @@ export default function FloatingCTA() {
   if (pathname !== '/' || !show) return null
 
   return (
-    <div className="fixed bottom-6 right-6 z-[55] md:bottom-8 md:right-8">
+    <div className="fixed inset-x-4 bottom-4 z-[55] flex justify-center md:inset-x-auto md:bottom-8 md:right-8">
       <button
         type="button"
         onClick={() => scrollToSection('booking')}
-        className="floating-cta-pulse inline-flex items-center gap-2 rounded-full bg-sage-mid px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-sage-600 hover:shadow-xl focus-visible:ring-offset-surface"
+        className="floating-cta-pulse inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-sage-mid px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-sage-600 hover:shadow-xl focus-visible:ring-offset-surface md:w-auto"
         aria-label="Book a free consultation"
       >
         <Calendar className="h-5 w-5 shrink-0" aria-hidden />

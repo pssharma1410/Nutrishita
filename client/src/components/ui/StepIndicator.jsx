@@ -4,7 +4,7 @@ const labels = ['Choose Date', 'Pick Time', 'Your Details']
 
 export default function StepIndicator({ currentStep }) {
   return (
-    <div className="w-full max-w-xl">
+    <div className="w-full max-w-xl overflow-hidden">
       <ol className="flex items-start justify-between gap-2" aria-label="Booking progress">
         {[0, 1, 2].map((i) => {
           const n = i + 1
@@ -20,7 +20,7 @@ export default function StepIndicator({ currentStep }) {
                   />
                 )}
                 <span
-                  className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-semibold transition ${
+                  className={`relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold transition sm:h-10 sm:w-10 ${
                     isComplete
                       ? 'bg-sage-mid text-white'
                       : isActive
@@ -38,7 +38,7 @@ export default function StepIndicator({ currentStep }) {
                 )}
               </div>
               <span
-                className={`mt-2 text-center text-xs font-medium ${
+                className={`mt-2 text-center text-[11px] font-medium leading-tight sm:text-xs ${
                   isActive || isComplete ? 'text-sage-100' : 'text-sage-400'
                 }`}
               >

@@ -52,7 +52,7 @@ export default function BookingConfirmed() {
   const gCal = buildGoogleCalendarUrl({ date: state.date, time: state.time })
 
   return (
-    <main className="relative min-h-svh overflow-hidden bg-surface pt-28 pb-20">
+    <main className="relative min-h-svh overflow-hidden bg-surface pb-16 pt-24 md:pb-20 md:pt-28">
       {showConfetti && (
         <div className="pointer-events-none fixed inset-0 z-10 overflow-hidden" aria-hidden>
           {Array.from({ length: 20 }).map((_, i) => (
@@ -71,9 +71,9 @@ export default function BookingConfirmed() {
         </div>
       )}
 
-      <div className="relative z-20 mx-auto max-w-lg px-6 text-center md:px-8">
-        <div className="mx-auto flex h-24 w-24 items-center justify-center">
-          <svg className="h-24 w-24" viewBox="0 0 64 64" fill="none" aria-hidden>
+      <div className="relative z-20 mx-auto max-w-lg px-4 text-center sm:px-6 md:px-8">
+        <div className="mx-auto flex h-20 w-20 items-center justify-center md:h-24 md:w-24">
+          <svg className="h-20 w-20 md:h-24 md:w-24" viewBox="0 0 64 64" fill="none" aria-hidden>
             <circle
               cx="32"
               cy="32"
@@ -95,7 +95,7 @@ export default function BookingConfirmed() {
           </svg>
         </div>
 
-        <h1 className="mt-8 font-display text-4xl font-medium tracking-tight text-ink md:text-[42px]">
+        <h1 className="mt-6 font-display text-3xl font-medium tracking-tight text-ink md:mt-8 md:text-[42px]">
           You&apos;re all set!
         </h1>
 
@@ -105,7 +105,7 @@ export default function BookingConfirmed() {
           <span className="font-semibold text-ink">{formatted?.timeLabel}</span>.
         </p>
 
-        <div className="mt-10 rounded-2xl border border-border bg-white p-8 text-left shadow-lg">
+        <div className="mt-8 rounded-2xl border border-border bg-white p-5 text-left shadow-lg sm:p-8 md:mt-10">
           <p className="text-sm text-sage-700">
             Check your inbox at{' '}
             <span className="font-semibold text-ink">{state.email}</span> for a calendar invite and meeting link.
