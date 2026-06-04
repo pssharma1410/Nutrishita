@@ -2,15 +2,15 @@ import { Camera, ExternalLink, Play, Video } from 'lucide-react'
 import FadeUp from '../ui/FadeUp'
 
 const instagramPosts = [
-  { url: 'https://www.instagram.com/p/DX4XtK3Iaqy/', title: 'Daily nutrition reel' },
-  { url: 'https://www.instagram.com/p/DYASFy9CXq8/', title: 'Food habit tip' },
-  { url: 'https://www.instagram.com/p/DYKqwnOCd8R/', title: 'Diet decode' },
-  { url: 'https://www.instagram.com/p/DXuEgZUI0Bi/', title: 'Wellness check' },
-  { url: 'https://www.instagram.com/p/DYUqxnki_jE/', title: 'Nutrition reminder' },
-  { url: 'https://www.instagram.com/p/DXPclqBgnbB/', title: 'Healthy swaps' },
-  { url: 'https://www.instagram.com/p/DXKVUwwgtYZ/', title: 'Plate balance' },
-  { url: 'https://www.instagram.com/p/DWrFy0Ikn-l/', title: 'Real food note' },
-  { url: 'https://www.instagram.com/p/DWl8HBQgkHH/', title: 'Desi diet decode' },
+  { url: 'https://www.instagram.com/p/DX4XtK3Iaqy/', title: 'Daily nutrition reel', tone: 'from-rose-100 via-white to-amber-100' },
+  { url: 'https://www.instagram.com/p/DYASFy9CXq8/', title: 'Food habit tip', tone: 'from-emerald-100 via-white to-lime-100' },
+  { url: 'https://www.instagram.com/p/DYKqwnOCd8R/', title: 'Diet decode', tone: 'from-sky-100 via-white to-teal-100' },
+  { url: 'https://www.instagram.com/p/DXuEgZUI0Bi/', title: 'Wellness check', tone: 'from-orange-100 via-white to-rose-100' },
+  { url: 'https://www.instagram.com/p/DYUqxnki_jE/', title: 'Nutrition reminder', tone: 'from-fuchsia-100 via-white to-amber-100' },
+  { url: 'https://www.instagram.com/p/DXPclqBgnbB/', title: 'Healthy swaps', tone: 'from-lime-100 via-white to-emerald-100' },
+  { url: 'https://www.instagram.com/p/DXKVUwwgtYZ/', title: 'Plate balance', tone: 'from-stone-100 via-white to-yellow-100' },
+  { url: 'https://www.instagram.com/p/DWrFy0Ikn-l/', title: 'Real food note', tone: 'from-cyan-100 via-white to-sage-100' },
+  { url: 'https://www.instagram.com/p/DWl8HBQgkHH/', title: 'Desi diet decode', tone: 'from-pink-100 via-white to-orange-100' },
 ]
 
 const youtubeShorts = [
@@ -32,6 +32,10 @@ function instagramEmbedUrl(postUrl) {
 function youtubeEmbedUrl(shortUrl) {
   const videoId = shortUrl.split('/shorts/')[1]?.split('?')[0]
   return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1&loop=1&playlist=${videoId}&controls=1&rel=0&modestbranding=1`
+}
+
+function youtubeVideoId(shortUrl) {
+  return shortUrl.split('/shorts/')[1]?.split('?')[0]
 }
 
 export default function Social() {
@@ -60,16 +64,27 @@ export default function Social() {
                       className="group/item overflow-hidden rounded-xl border border-border bg-white shadow-inner transition duration-300 hover:-translate-y-1 hover:shadow-md"
                     >
                       <div className="relative aspect-[4/5] overflow-hidden bg-sage-100">
+                        <div className={`absolute inset-0 bg-gradient-to-br ${post.tone} md:hidden`}>
+                          <div className="absolute inset-x-3 top-3 flex items-center justify-between">
+                            <span className="rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-pink-600 shadow-sm">
+                              Reel {i + 1}
+                            </span>
+                            <Camera className="h-4 w-4 text-pink-600" aria-hidden />
+                          </div>
+                          <div className="absolute inset-x-3 bottom-3 rounded-xl bg-white/90 px-3 py-2 shadow-sm">
+                            <p className="font-display text-sm font-semibold leading-tight text-ink">{post.title}</p>
+                          </div>
+                        </div>
                         <iframe
                           src={instagramEmbedUrl(post.url)}
                           title={`Instagram reel preview ${i + 1}`}
-                          className="pointer-events-none absolute left-0 top-[-46px] h-[calc(100%+92px)] w-full border-0"
+                          className="pointer-events-none absolute left-0 top-[-46px] hidden h-[calc(100%+92px)] w-full border-0 md:block"
                           loading="lazy"
                           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                           referrerPolicy="strict-origin-when-cross-origin"
                         />
                         <div className="absolute inset-x-2 top-2 flex items-center justify-between">
-                          <span className="rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-pink-600 shadow-sm backdrop-blur">
+                          <span className="hidden rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-pink-600 shadow-sm backdrop-blur md:inline-flex">
                             Reel {i + 1}
                           </span>
                         </div>
@@ -110,16 +125,36 @@ export default function Social() {
             <p className="mt-2 text-sm text-sage-700">Shorts play muted in a compact carousel</p>
             <div className="mt-6 flex snap-x gap-3 overflow-x-auto pb-3 [scrollbar-width:thin] sm:gap-4">
               {youtubeShorts.map((shortUrl, i) => {
+                const videoId = youtubeVideoId(shortUrl)
                 return (
                   <div
                     key={`${shortUrl}-${i}`}
                     className="w-[160px] shrink-0 snap-start overflow-hidden rounded-xl border border-border bg-sage-50 shadow-inner sm:w-[210px]"
                   >
                     <div className="relative aspect-[9/16] bg-black">
+                      <a
+                        href={shortUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="absolute inset-0 block sm:hidden"
+                        aria-label={`Open YouTube short ${i + 1}`}
+                      >
+                        <img
+                          src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+                          alt=""
+                          className="h-full w-full object-cover"
+                          loading="lazy"
+                        />
+                        <span className="absolute inset-0 flex items-center justify-center bg-black/15">
+                          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-red-600 shadow-md">
+                            <Play className="ml-0.5 h-6 w-6 fill-current" aria-hidden />
+                          </span>
+                        </span>
+                      </a>
                       <iframe
                         src={youtubeEmbedUrl(shortUrl)}
                         title={`YouTube short ${i + 1}`}
-                        className="absolute inset-0 h-full w-full"
+                        className="absolute inset-0 hidden h-full w-full sm:block"
                         loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
