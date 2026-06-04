@@ -25,15 +25,6 @@ const youtubeShorts = [
   'https://youtube.com/shorts/qcl2XGeewwc',
 ]
 
-function instagramEmbedUrl(postUrl) {
-  return `${postUrl}embed/`
-}
-
-function youtubeEmbedUrl(shortUrl) {
-  const videoId = shortUrl.split('/shorts/')[1]?.split('?')[0]
-  return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1&loop=1&playlist=${videoId}&controls=1&rel=0&modestbranding=1`
-}
-
 function youtubeVideoId(shortUrl) {
   return shortUrl.split('/shorts/')[1]?.split('?')[0]
 }
@@ -63,8 +54,8 @@ export default function Social() {
                       key={post.url}
                       className="group/item overflow-hidden rounded-xl border border-border bg-white shadow-inner transition duration-300 hover:-translate-y-1 hover:shadow-md"
                     >
-                      <div className="relative aspect-[4/5] overflow-hidden bg-sage-100">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${post.tone} md:hidden`}>
+                      <div className={`relative aspect-[4/5] overflow-hidden bg-gradient-to-br ${post.tone}`}>
+                        <div className="absolute inset-0">
                           <div className="absolute inset-x-3 top-3 flex items-center justify-between">
                             <span className="rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-pink-600 shadow-sm">
                               Reel {i + 1}
@@ -74,19 +65,6 @@ export default function Social() {
                           <div className="absolute inset-x-3 bottom-3 rounded-xl bg-white/90 px-3 py-2 shadow-sm">
                             <p className="font-display text-sm font-semibold leading-tight text-ink">{post.title}</p>
                           </div>
-                        </div>
-                        <iframe
-                          src={instagramEmbedUrl(post.url)}
-                          title={`Instagram reel preview ${i + 1}`}
-                          className="pointer-events-none absolute left-0 top-[-46px] hidden h-[calc(100%+92px)] w-full border-0 md:block"
-                          loading="lazy"
-                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                          referrerPolicy="strict-origin-when-cross-origin"
-                        />
-                        <div className="absolute inset-x-2 top-2 flex items-center justify-between">
-                          <span className="hidden rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-pink-600 shadow-sm backdrop-blur md:inline-flex">
-                            Reel {i + 1}
-                          </span>
                         </div>
                         <a
                           href={post.url}
@@ -136,7 +114,7 @@ export default function Social() {
                         href={shortUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="absolute inset-0 block sm:hidden"
+                        className="absolute inset-0 block"
                         aria-label={`Open YouTube short ${i + 1}`}
                       >
                         <img
@@ -151,14 +129,6 @@ export default function Social() {
                           </span>
                         </span>
                       </a>
-                      <iframe
-                        src={youtubeEmbedUrl(shortUrl)}
-                        title={`YouTube short ${i + 1}`}
-                        className="absolute inset-0 hidden h-full w-full sm:block"
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
                     </div>
                     <a
                       href={shortUrl}
